@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>APIReqFwdr</title>
+    </head>
+
+    <body>
+
+        <header>
+            <div>
+                Natural language processing AI API Interface sentiment 2.1<br>
+                ( fixed setting: english)
+            </div>
+            <div>
+                <a href="https://meaningcloud.com/" target="_blank">Link to meaningcloud</a>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <!-- <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name"> -->
+                    <label for="newsarticle" id="textlabel">...</label>
+                    <textarea id="newsarticle" rows="11" columns="79">...</textarea>
+                    <input type="submit" id="submittoapi" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form>
+            </section>
+
+            <section class="sectiongrid">
+                <div class="section-header"><strong>Form Results</strong></div><div>API: Sentiment 2.1</div>
+                <div class="section-col">Agreement:</div><div class="section-col" id="agreement">-</div>
+                <div class="section-col">Subjectivity:</div><div class="section-col" id="subjectivity">-</div>
+                <div class="section-col">Irony:</div><div class="section-col" id="irony">-</div>
+                <div class="section-col">Text excerpt:</div><div class="section-col" id="excerpt">-</div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Evaluate a News Article | example project showcase</p>
+        </footer>
+<script>
+if ('serviceWorker' in navigator ) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+    })
+}
+</script>
+
+    </body>
+</html>

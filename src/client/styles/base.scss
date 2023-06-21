@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 99vh;
+}
+
+main {
+    flex: 2;
+}
+
+section {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: row;
+} 
+.sectiongrid {
+    display: grid;
+    grid-template-columns: 10pc 39pc;
+    grid-template-rows: 2em 17px 17px 17px 17px;
+    grid-column-gap: 12px;
+    grid-row-gap: 2em; 
+}
+
+.section-col {
+    background:lightgray;
+    align-self: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+a {
+    text-decoration: none;
+}
