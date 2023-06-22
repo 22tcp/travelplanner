@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     entry: './src/client/index.js',
@@ -18,9 +19,30 @@ module.exports = {
                 loader: "babel-loader"
             },
             {
-                test: /\.scss$/,
-                use: [ 'style-loader', 'css-loader', 'sass-loader' ]
-            }
+                test: /\.(scss)$/,
+                use: [
+                  {
+                    //loader: 'style-loader'
+                    loader: miniCssExtractPlugin.loader
+                  },
+                  {
+                    loader: 'css-loader'
+                  },
+                  {
+                    loader: 'postcss-loader',
+                    options: {
+                      postcssOptions: {
+                        plugins: () => [
+                          require('autoprefixer')
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    loader: 'sass-loader'
+                  }
+                ]
+            }        
         ]
     },
     plugins: [
@@ -32,6 +54,7 @@ module.exports = {
         new WorkboxPlugin.GenerateSW({
             clientsClaim: true,
             skipWaiting: true
-        })
+        }),
+        new miniCssExtractPlugin()
     ]
 }
