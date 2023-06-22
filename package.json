@@ -5,8 +5,8 @@
   "scripts": {
     "test": "jest",
     "start": "node src/server/index.js",
-    "build-prod": "webpack --config webpack.prod.js",
-    "build-dev": "webpack-dev-server  --config webpack.dev.js --open --hot"
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --open --hot --config webpack.dev.js"
   },
   "keywords": [],
   "author": "Thorsten",

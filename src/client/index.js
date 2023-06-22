@@ -1,7 +1,14 @@
-import './styles/resets.scss'
-import './styles/base.scss'
-import './styles/form.scss'
-import './styles/footer.scss'
-import './styles/header.scss'
+import './styles/bootstraploader.scss'
+
 
 import * as bootstrap from 'bootstrap'
+
+import { handleSubmit  } from './js/app'
+
+export { handleSubmit }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Add event listener to a button or any other element
+    const button = document.getElementById('myButton');
+    if ( button == typeof(Object) ) { button.addEventListener('click', handleSubmit);}
+  });

@@ -1,16 +1,16 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
+.local-body {
     display: flex;
     flex-direction: column;
     min-height: 99vh;
 }
 
-main {
+.local-main {
     flex: 2;
 }
 
-section {
+.local-section {
     max-width: 800px;
     margin: 50px auto;
 }
