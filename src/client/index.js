@@ -1,4 +1,4 @@
-import './styles/bootstraploader.scss'
+import './styles/main.scss'
 
 
 import * as bootstrap from 'bootstrap'
