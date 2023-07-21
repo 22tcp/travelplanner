@@ -2,58 +2,62 @@
 <html lang="en" dir="ltr" data-bs-theme="dark">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>travelwell</title>
+  <title>travelwell</title>
 </head>
 
 <body class="ts-container">
 
-    <header class="header">
-        <h1>Travel Planner</h1>
-    </header>
-    <main class="main multi-col-main">
+  <header class="header">
+    <h1>Travel Planner</h1>
+  </header>
+  <main class="main">
+    <div class="multi-col-main">
+      <div class="mcm-l">
+        <img class="ha-image" alt="placeholder"></img>
+      </div>
+      <div class="mcm-r">
+        <div class="table-colon">
+          <div class="table-l">My Voyage</div>
+          <div class="table-r">
+            <span class="">Destination Description</span>
+          </div>
+          <div class="table-l">Departure</div>
+          <div class="table-r"><span>04/04/24</span></div>
+        </div>
+        <button class="ts-btn">Add Voyage</button>
+        <button class="ts-btn">Remove Voyage</button>  
+      </div>
+    </div>
+
+
+      <div class="">
         <div class="">
-            <div class="voyage">
-                <img class="ha-image"></img>
-                <dl>
-                    <dt class="">My Voyage</dt>
-                    <dd class=""><span class="">Destination Description</span></dd>
-                    <dt class="">Departure</dt>
-                    <dd class=""><span>04/04/24</span></dd>
-                </dl>
-            </div>
+          Trip is starting in <label id="numberofdays">nnn</label> days
         </div>
-
-        <div class="row">
-            <div class="col-sm-2">
-                <button class="">Add Voyage</button> <button class="">Remove Voyage</button>
-            </div>
+        <div class="">
+          Text Text Text Text Text Text Text Text
         </div>
-        <div class="row">
-            <div class="col-sm">
-                Trip is starting in <label id="numberofdays">nnn</label> days
-            </div>
-        </div>
-            <p>Text Text Text Text Text Text Text Text</p>
-    </main>
+      </div>
+      <div class="mcm-r"></div>
+
+  </main>
 
 
+  <footer class="footer">
+    <p>well travelled | capstone project</p>
+  </footer>
 
-
-    <footer class="footer">
-        <p>well travelled | capstone project</p>
-    </footer>
-
-    <!-- <script>
+  <!-- <script>
 if ('serviceWorker' in navigator ) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
     })
 }
 </script> -->
-    </div>
+  </div>
 </body>
 
 </html>

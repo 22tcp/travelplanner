@@ -1,7 +1,7 @@
 import './styles/main.scss'
 
 
-import * as bootstrap from 'bootstrap'
+//import * as bootstrap from 'bootstrap'
 
 import { handleSubmit  } from './js/app'
 

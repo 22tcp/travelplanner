@@ -4,19 +4,53 @@
 }
 
 .ts-container {
-  display: grid;
-  grid-template-columns: 4px 30% 30% 30% 4px;
-  grid-template-rows: auto auto minmax(500px, 1fr) auto;
+  display:grid;
+  justify-content: center;
+  grid-template-columns: 4px minmax(500px 1fr ) 4px;
+  grid-template-rows: auto  minmax(500px, 1fr ) auto;
   grid-template-areas:
-    "hd hd hd hd hd hd"
-    "na na na na na na"
-    "ma ma ma ma ma ma"
-    "ft ft ft ft ft ft";
-  column-gap: 16px;
+    "hd hd hd"
+    "ml ma mr"
+    "ft ft ft";
   row-gap: 0px;
   background: var(--ma-light-bkg);
   border-radius: 10px 10px 10px 10px;
-  margin: 4px;
+  margin:auto;
+}
+
+.multi-col-main {
+  display: grid;
+  grid-template-areas:
+    "lft mid rgt"
+    "lft2 mid rgt2";
+  column-gap: 10px; 
+  grid-template-columns: 0,5fr auto 0,5fr;
+  grid-template-rows: auto auto;
+  row-gap: 2%;
+}
+
+.mcm-l {
+  grid-area: lft;
+}
+
+.mcm-m {
+  grid-area: mid;
+}
+
+.mcm-r {
+  grid-area: rgt;
+}
+
+.mcm-header {
+  background: white;
+}
+
+.mcm-header > ul, li {
+  text-align: center;
+  line-height: 1em;
+  padding: 1px 0px 1px 0px;
+  margin: 1px;
+  list-style-type: none;
 }
 
 h1 {
@@ -80,16 +114,17 @@ h4 {
   margin: 2px 2px 2px 7px;
 }
 
-.ts-nav-btn {
+.ts-btn {
   background: var(--ma-light-bkg);
-  padding: 4px 20px 4px 20px;
-  margin: 2px;
+  padding: 4px 4px 4px 4px;
+  margin: 12px 2px 2px 2px;
   font-size: 11pt;
   border: white solid 1px;
   border-radius: 6px;
+  width: 120px;
 }
 
-.ts-nav-btn:hover {
+.ts-btn:hover {
   background: white;
 }
 
@@ -115,43 +150,7 @@ h4 {
   flex: auto;
 }
 
-.multi-col-main {
-  display: grid;
-  grid-template-areas: "mgl lft mid rgt mgr"
-                       "mgl lft2 mid2 rgt2 mgr";
-  grid-template-columns: 5% auto auto auto 5%;
-  grid-template-rows: auto 42px;
-  row-gap: 0;
-  column-gap: 2%; 
-}
 
-.mcm-l {
-  grid-area: lft;
-}
-
-.mcm-m {
-  grid-area: mid;
-}
-
-.mcm-r {
-  grid-area: rgt;
-}
-
-.mcm-header {
-  background: white;
-}
-
-.mcm-header > ul, li {
-  text-align: center;
-  line-height: 1em;
-  padding: 1px 0px 1px 0px;
-  margin: 1px;
-  list-style-type: none;
-}
-
-.main {
-  border-radius: 30px 30px 0px 0px;
-}
 
 .article {
   display: block;
@@ -236,16 +235,4 @@ h4 {
 
 .fcap {
   margin: 2px 0px 10px 0px;
-}
-
-.ha-image {
-  position:flex;
-  border-radius: 20px;
-  border: white solid 1px;
-  max-width: 240px;
-  min-width: 100px;
-  max-height: 300px;
-  min-height: 200px;
-  padding: 4px;
-  margin: 16px 2px 16px 2px;
 }
