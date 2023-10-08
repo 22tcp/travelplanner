@@ -59,7 +59,7 @@ h1 {
   font-style: normal;
   font-kerning: auto;
   letter-spacing: 0.1pt;
-  padding: 6px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 h2 {
@@ -92,18 +92,14 @@ h4 {
 
 .header {
   grid-area: hd;
-  margin-top: 1px;
+  margin-top: 10px;
   margin-left: 1px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-content: center;
-  vertical-align: sub;
   overflow-y: hidden;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 20px 20px 20px 20px;
   background: var(--ma-dark-bkg);
-  padding-left: 1px;
-  padding-top: 7px;
 }
 
 .hd-image {
