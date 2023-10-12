@@ -50,7 +50,7 @@ module.exports = {
             },
             {
               test: /\.png$/,
-              loader: 'file-loader'            
+              type: 'asset/resource'           
             } 
         ]
     },

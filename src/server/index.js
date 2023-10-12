@@ -1,9 +1,12 @@
 var path = require('path')
+const dotenv = require('dotenv').config()
 const express = require('express')
+const uid = require('uid-safe')
+const session = require('express-session')
 const mockAPIResponse = require('./mockAPI.js')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
-
-
 
 app.use(express.static('dist'))
 
