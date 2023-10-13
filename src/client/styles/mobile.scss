@@ -1,0 +1,143 @@
+  .ts-container {
+    display: inline-block;
+  }
+
+  .ts-light-mode {
+    background: content-box var(--ma-dark-bkg);
+  }
+
+  h1 {
+    color: white;
+    font-size: 16pt;
+  }
+
+  h2 {
+    color: white;
+    font-size:14pt;
+  }
+
+  .ts-header {
+    grid-area: hd;
+    text-align:center;
+    white-space: pre-line;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-radius: 12px 12px 12px 12px;
+    padding: 4px;
+    margin: 0px;
+  }
+
+  .hd-image {
+    display: none;
+  }
+
+  .ts-nav-btn {
+    background: #F0E1D8;
+    color:#0a0a0a;
+    padding: 4px 15px 4px 15px;
+    margin: 2px;
+    font-size: 10pt;
+    border: #6A79C4 solid 1px;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .mcm-header {
+    display: block;
+  }
+
+  .mcm-header>ul,li {
+    line-height: 1em;
+    padding: 4px 1px 4px 5px;
+    margin: 2px;
+    list-style-type:none;
+  }
+
+  .ts-main { 
+    border-radius: 12px 12px 0px 0px; 
+  }
+
+  .ts-article {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 4px 0px 4px 0px;
+    margin: 4px 0px 4px 0px;
+    border: var(--ma-strong-bkg) solid 1px;
+    background: var(--ma-light-bkg);
+    border-radius: 12px;
+  }
+
+  .ts-nav-btn-large {
+    background: var(--ma-light-bkg);
+    font-size: 14pt;
+    border: white solid 1px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+    margin: 6px 0px 6px 0px;
+    -webkit-text-decoration-color: var(--text-col);
+    text-decoration-color: var(--text-col);
+  }
+
+  .nav-btn-large:visited {
+    text-decoration: none;
+    color: var(--text-col);
+    -webkit-text-decoration-line: none;
+    -webkit-text-decoration-color: var(--text-col);
+    text-decoration-color: var(--text-col);
+    text-decoration-line:  none;
+  }
+
+  .nav-btn-large:hover {
+    background: white;
+  }
+
+  .social-media {
+    text-align:center;
+    border-radius: 6px;
+  }
+
+  .ts-txt {
+    text-align: justify;
+    margin: 1px 6px 1px 6px;
+    line-height: normal;
+    font-style: normal;
+  }
+
+  .ts-txt_bold {
+    text-align: inherit;
+    font-weight: 900;
+    margin: 0px;
+    line-height: normal;
+    font-style: normal;
+  }
+
+  .txt_i {
+    text-align: inherit;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0px;
+    line-height: normal;
+  }
+
+  .fcap {
+    font-size: 9pt;
+    margin: 0px;
+    padding: 1px;
+    font-weight:200;
+  }
+
+  .ha-image {
+    position:fixed;
+    border-radius: 20px;
+    border: white solid 1px;
+    max-width: 240px;
+    min-width: 100px;
+    max-height: 250px;
+    min-height: 100px;
+    padding: 4px;
+    margin: 16px 2px 16px 2px;
+  }

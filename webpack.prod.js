@@ -42,7 +42,11 @@ module.exports = {
                     loader: 'sass-loader'
                   }
                 ]
-            }        
+            },
+            {
+              test: /\.png$/i,
+              type: 'asset/resource'
+            }         
         ]
     },
     plugins: [

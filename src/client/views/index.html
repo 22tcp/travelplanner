@@ -1,39 +1,63 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" dir="ltr" data-bs-theme="dark">
 
-        <title>travelwell</title>
-    </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <body>
-        <div class="container p-4 my-4 mt-2 mx-auto text-white bg-dark rounded-4">
-            <header>
-                <div>
-                    <h1 class="mx-auto">bootstrapped this</h1>
-                </div>
-            </header>
+  <title>travelwell</title>
+</head>
 
-            <main>
-                <section>
-                    
-                <button class="btn btn-primary">Add Voyage</button>
-                    
-                </section>
-            </main>
+<body class="ts-container">
 
-            <footer>
-                <p>well travelled | capstone project</p>
-            </footer>
+  <header class="header">
+    <h1>Travel Planner</h1>
+  </header>
+  <main class="main">
+    <div class="multi-col-main">
+      <div class="mcm-l">
+        <div class="ha-image" id="vPicture" alt="placeholder"></div>
+      </div>
+      <div class="mcm-r">
+        <div class="table-colon">
+          <div class="table-l">My Voyage</div>
+          <div class="table-r">
+            <span class="">Destination</span>
+          </div>
+          <div class="table-l">Departure</div>
+          <div class="table-r"><span>04/04/24</span></div>
         </div>
-<!-- <script>
+        <button class="ts-btn" id="voyageAdd">Add Voyage</button>
+        <button class="ts-btn" id="voyageRemove">Remove Voyage</button>  
+      </div>
+    </div>
+
+
+    <div class="">
+      <div class="">
+          Trip is starting in <label id="numberofdays">nnn</label> days
+      </div>
+      <div class="">
+        Text Text Text Text Text Text Text Text
+      </div>
+    </div>
+    <div class="mcm-r"></div>
+
+  </main>
+
+
+  <footer class="footer">
+    <p>well travelled | capstone project</p>
+  </footer>
+
+  <!-- <script>
 if ('serviceWorker' in navigator ) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
     })
 }
 </script> -->
+  </div>
+</body>
 
-    </body>
 </html>
