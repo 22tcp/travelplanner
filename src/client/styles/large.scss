@@ -24,7 +24,7 @@
     "lft mid rgt"
     "lft2 mid rgt2";
   column-gap: 10px; 
-  grid-template-columns: 0,5fr auto 0,5fr;
+  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto;
   row-gap: 2%;
 }

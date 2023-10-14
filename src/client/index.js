@@ -9,14 +9,11 @@ export { handleSubmit }
 
 function addPicture() {
   const element = document.createElement('div');
-
-  // Add the image to our existing div.
-  const myImage = new Image(300,200);
+  const myImage = new Image();
   myImage.src = Pic;
   myImage.id  = 'Pic';
   element.appendChild(myImage);
-
-   return element;
+  return element;
 }
 
 document.getElementById('vPicture').appendChild(addPicture());

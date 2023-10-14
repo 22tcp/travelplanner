@@ -90,7 +90,7 @@ h3 {
 }
 
 .table-l {
-  text-align: right;
+  text-align: left;
 }
 
 .table-r {
@@ -134,15 +134,12 @@ h3 {
 }
 
 .ha-image {
-  display:flex;
-  border-radius: 5px;
-  border: lightgrey;
-  background-color: white;
-  min-width: 300px;
-  max-width:301px;
-  min-height: 200px;
-  max-height:201px;
+  display:inline-block;
+  
+  border: none;
+  background-color: transparent;
+  max-width:50%;
+  max-height:50%;
   padding: 4px;
   margin: 1px 2px 16px 2px;
-  flex-shrink: 0;
 }
