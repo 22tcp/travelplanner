@@ -7,7 +7,7 @@
   display:grid;
   justify-content: center;
   grid-template-columns: 4px minmax(500px 1fr ) 4px;
-  grid-template-rows: auto  minmax(500px, 1fr ) auto;
+  grid-template-rows: auto  minmax(300px, 1fr ) auto;
   grid-template-areas:
     "hd hd hd"
     "ml ma mr"
@@ -41,6 +41,23 @@
   grid-area: rgt;
 }
 
+.mcm-l2 {
+  grid-area: lft2;
+  background:var(--ma-dark-bkg);
+  border-radius: 0px 0px 12px 12px;
+}
+
+.mcm-m2 {
+  grid-area: mid2;
+  background:var(--ma-dark-bkg);
+  border-radius: 0px 0px 12px 12px;
+}
+
+.mcm-r2 {
+  grid-area: rgt2;
+  background:var(--ma-dark-bkg);
+  border-radius: 0px 0px 12px 12px;
+}
 .mcm-header {
   background: white;
 }
@@ -165,24 +182,6 @@ h4 {
   margin: 0;
 }
 
-.mcm-l2 {
-  grid-area: lft2;
-  background:var(--ma-dark-bkg);
-  border-radius: 0px 0px 12px 12px;
-}
-
-.mcm-m2 {
-  grid-area: mid2;
-  background:var(--ma-dark-bkg);
-  border-radius: 0px 0px 12px 12px;
-}
-
-.mcm-r2 {
-  grid-area: rgt2;
-  background:var(--ma-dark-bkg);
-  border-radius: 0px 0px 12px 12px;
-}
-
 .nav-btn-large {
   background: var(--ma-light-bkg);
   font-size: 14pt;
@@ -231,4 +230,15 @@ h4 {
 
 .fcap {
   margin: 2px 0px 10px 0px;
+}
+
+.ha-image {
+  display:inline-block;
+  
+  border: none;
+  background-color: transparent;
+  max-width:50%;
+  max-height:50%;
+  padding: 4px;
+  margin: 1px 2px 16px 2px;
 }

@@ -1,5 +1,5 @@
 
-@import url("mobile.scss") (max-width: 400px);
+@import url("medium.scss") (max-width: 400px);
 @import url("medium.scss") (min-width: 401px) and (max-width: 900px);
 @import url("large.scss") (min-width: 901px);
 
@@ -83,6 +83,11 @@ h3 {
 .table-colon {
   display: grid;
   grid-template-columns: max-content max-content;
+  grid-template-rows: 50px 50px auto;
+  background: var(--ma-light-bkg);
+  padding: 4px;
+  border: white sold 1px;
+  border-radius: 8px;
 }
 
  .table-colon > *:nth-child(even)::before {
@@ -95,6 +100,10 @@ h3 {
 
 .table-r {
   text-align: left;
+}
+
+.date-picker {
+  ::-webkit-datetime-edit { padding: 2px; }
 }
 
 .link-implant {
@@ -133,13 +142,3 @@ h3 {
   color: #F0E1D8;
 }
 
-.ha-image {
-  display:inline-block;
-  
-  border: none;
-  background-color: transparent;
-  max-width:50%;
-  max-height:50%;
-  padding: 4px;
-  margin: 1px 2px 16px 2px;
-}
