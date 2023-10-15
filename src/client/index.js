@@ -1,6 +1,6 @@
 import './styles/main.scss'
 
-import Pic from '../static/travel-agent2.png'
+import Pic from '../static/travelcat.jpg'
 //import * as bootstrap from 'bootstrap'
 
 import { handleSubmit  } from './js/app.js'
@@ -8,12 +8,11 @@ import { handleSubmit  } from './js/app.js'
 export { handleSubmit }
 
 function addPicture() {
-  const element = document.createElement('div');
   const myImage = new Image();
+  myImage.classList.add("ha-image");
   myImage.src = Pic;
   myImage.id  = 'Pic';
-  element.appendChild(myImage);
-  return element;
+  return myImage;
 }
 
 document.getElementById('vPicture').appendChild(addPicture());
@@ -30,6 +29,7 @@ function addDateInput() {
   element.setAttribute("type", "date")
   element.setAttribute("min", dlimit );
   element.setAttribute("max","2099-12-31");
+  element.classList.add("date-picker");
   return element;
 }
 document.getElementById('datepicker').appendChild(addDateInput());
@@ -39,3 +39,5 @@ document.addEventListener('DOMContentLoaded', () => {
     const button = document.getElementById('myButton');
     if ( button == typeof(Object) ) { button.addEventListener('click', handleSubmit);}
   });
+
+  

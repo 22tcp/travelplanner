@@ -15,34 +15,37 @@
   </header>
   <main class="main">
     <div class="multi-col-main">
-      <div class="mcm-l">
-        <div class="ha-image" id="vPicture" alt="placeholder"></div>
+      <div class="mcm-l" id="vPicture">
       </div>
       <div class="mcm-r">
         <form>
           <div class="table-colon">
-            <div class="table-l">Voyage</div>
-            <div class="table-r">
-              <span class="">Some City</span>
+            <div class="table-n">Voyage</div>
+            <div class="table-n">
+              <span class="table-n">Some City</span>
             </div>
 
             <div class="table-l">Departure</div>
-            <div class="table-r"><span id="datepicker"></span><input type="button" value="OK"></div>
+            <span id="datepicker" class="table-r"></span>
           </div>
         </form>
-        <button class="ts-btn" id="voyageAdd">Add Voyage</button>
-        <button class="ts-btn" id="voyageRemove">Remove Voyage</button>
+        <div class="two-boxes">
+          <button class="ts-btn" id="voyageAdd">Add Voyage</button>
+          <button class="ts-btn" id="voyageRemove">Remove Voyage</button>
+        </div>
+        some information in this mcm-r area lets see how it reacts to overspill
+      </div>
+      <div class="mcm-stat">
+        Trip is starting in <label id="numberofdays"></label> days
       </div>
     </div>  
-    </main>
-    <div>
-      Trip is starting in <label id="numberofdays">nnn</label> days
-    </div>
+  </main>
+
 
 
 
   <footer class="footer">
-    <p>well travelled | capstone project</p>
+
   </footer>
 
   <!-- <script>

@@ -83,10 +83,10 @@ h3 {
 .table-colon {
   display: grid;
   grid-template-columns: max-content max-content;
-  grid-template-rows: 50px 50px auto;
+  grid-template-rows: 35px 25px;
   background: var(--ma-light-bkg);
-  padding: 4px;
-  border: white sold 1px;
+  padding: 8px 4px 4px 8px;
+  border: white solid 1px;
   border-radius: 8px;
 }
 
@@ -96,14 +96,16 @@ h3 {
 
 .table-l {
   text-align: left;
+  padding: 3px 0px 0px 0px;
 }
 
-.table-r {
+.table-n {
   text-align: left;
 }
 
 .date-picker {
-  ::-webkit-datetime-edit { padding: 2px; }
+  background: var(--ma-medium-bkg);
+  height:1.5em;
 }
 
 .link-implant {
