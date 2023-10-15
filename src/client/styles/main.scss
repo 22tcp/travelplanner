@@ -101,6 +101,7 @@ h3 {
 
 .table-n {
   text-align: left;
+  padding: 2px 0px 0px 0px;
 }
 
 .date-picker {
@@ -142,5 +143,9 @@ h3 {
   border-radius: 50%;
   background: black;
   color: #F0E1D8;
+}
+
+.nodisplay {
+  display: none;
 }
 

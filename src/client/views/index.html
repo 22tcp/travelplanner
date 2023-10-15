@@ -18,17 +18,16 @@
       <div class="mcm-l" id="vPicture">
       </div>
       <div class="mcm-r">
-        <form>
           <div class="table-colon">
-            <div class="table-n">Voyage</div>
+            <div class="table-l"><label for="destination">Destination</label></div>
             <div class="table-n">
-              <span class="table-n">Some City</span>
+              <span class="table-n">                
+                <input id="destination" class="input-destination"/>              
+              </span>
             </div>
-
             <div class="table-l">Departure</div>
             <span id="datepicker" class="table-r"></span>
           </div>
-        </form>
         <div class="two-boxes">
           <button class="ts-btn" id="voyageAdd">Add Voyage</button>
           <button class="ts-btn" id="voyageRemove">Remove Voyage</button>
@@ -36,7 +35,8 @@
         some information in this mcm-r area lets see how it reacts to overspill
       </div>
       <div class="mcm-stat">
-        Trip is starting in <label id="numberofdays"></label> days
+        <div class="nodisplay" id="incomplete">Please Enter A destination and a date<br></div>
+        <div>Trip is starting in <span id="numberofdays"></span> days</div>
       </div>
     </div>  
   </main>
