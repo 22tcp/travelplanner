@@ -6,17 +6,18 @@
 .ts-container {
   display:grid;
   justify-content: center;
-  grid-template-columns: 4px minmax(500px 1fr ) 4px;
-  grid-template-rows: auto minmax(300px 1fr ) 30px 30px ;
+  justify-self: center;
+  grid-template-columns: 4px 600px 4px;
+  grid-template-rows: auto minmax( 300px, 1fr ) 30px 30px ;
   grid-template-areas:
     "hd hd hd"
-    "ml ma mr"
+    "ma ma ma"
     "sl st sr"
     "ft ft ft";
   row-gap: 0px;
   background: var(--ma-light-bkg);
   border-radius: 10px 10px 10px 10px;
-  margin:auto;
+  margin: 2px;
 }
 
 .container-st {
@@ -31,15 +32,15 @@
     "lft  rgt"
     "lft2  rgt2"
     "stat stat";
-  //column-gap: 10px; 
-  grid-template-columns:  max-content 300px;
+  column-gap: 10px; 
+  grid-template-columns:  300px 300px;
   grid-template-rows: 200px 6px auto;
   row-gap: 5px;
 }
 
 .mcm-l {
   grid-area: lft;
-  justify-self: center;
+  justify-self: left;
 }
 
 .mcm-stat {
@@ -256,8 +257,7 @@ h4 {
   display:inline-block;
   border: none;
   background-color: transparent;
-  //max-width: auto;
-  max-height:70%;
+  max-height:100%;
   width:auto;
   height: auto;
   padding: 4px;
