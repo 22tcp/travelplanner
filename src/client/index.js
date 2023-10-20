@@ -29,12 +29,31 @@ function addDateInput() {
   element.setAttribute("type", "date");
   element.setAttribute("min", dlimit );
   element.setAttribute("max","2099-12-31");
+  element.setAttribute("id", "datepickerinput")
   element.classList.add("date-picker");
   return element;
 }
 document.getElementById('datepicker').appendChild(addDateInput());
 
+const checkCompleteness = () => {
+  const destdata = document.getElementById('destination');
+  const lengthdestdata = destdata.value.length;
+  const lengthdatedata = document.getElementById('datepickerinput').value.length;
+  const incompobj = document.getElementById('incomplete');
+  const duration  = document.getElementById('duration');
+  if ( lengthdestdata < 1 || lengthdatedata << 1 ){
+    incompobj.classList.remove('nodisplay');
+    destdata.focus();
+    incompobj.classList.add('important');
+    duration.classList.add('nodisplay');
 
+    setTimeout( () => {
+      incompobj.classList.add('nodisplay');
+      duration.classList.remove('nodisplay');
+    }, 4000);
+    return;
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to a button or any other element
@@ -49,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    //document.getElementById('voyageAdd').addEventListener('click', checkCompleteness )
-  });
+    document.getElementById('voyageAdd').addEventListener('click', checkCompleteness )
+});
 
-  
