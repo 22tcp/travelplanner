@@ -56,14 +56,30 @@ export const checkCompleteness = () => {
 
     return(setTimeout( () => {
       incompobj.classList.add('nodisplay');
-      duration.classList.remove('nodisplay');
+      //duration.classList.remove('nodisplay');
     }, 4000));
     
   } else {
+    incompobj.classList.add('nodisplay')
     console.log("data complete, storing ")
     localStorage.setItem("travelapp_destination", destdata.value )
     localStorage.setItem("travelapp.date", datedata.value )
   }
+}
+
+export const timespan = () => {
+  const datedata = document.getElementById('datepickerinput')
+  const displaydays = document.getElementById('numberofdays')
+  const incompobj = document.getElementById('incomplete');
+  const duration = document.getElementById('duration')
+  if ( ! datedata ) { return }
+  if ( ! datedata.value.length ) { 
+    displaydays.innerHTML = "-"
+    return }
+  var days = ( Math.floor(new Date(datedata.value).getTime()) - Math.floor(Date.now()) ) / 86400000
+  displaydays.innerHTML = "&nbsp;" + Math.ceil(days) + "&nbsp;&nbsp;"
+  duration.classList.remove('nodisplay')
+  incompobj.classList.add('nodisplay')
 }
 
 export function addDateInput() {

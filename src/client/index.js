@@ -6,7 +6,7 @@ import Pic from '../static/travelcat.jpg'
 import { handleSubmit } from './js/app.js'
 import { checkCompleteness } from './js/app.js'
 import { addDateInput } from './js/app.js'
-
+import { timespan } from './js/app.js'
 export { handleSubmit }
 
 function addPicture() {
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   document.getElementById('vPicture').appendChild(addPicture());
   document.getElementById('datepicker').appendChild(addDateInput());
-  document.getElementById('voyageAdd').addEventListener('click', checkCompleteness);
+  document.getElementById('datepickerinput').addEventListener('blur', timespan );
+  document.getElementById('voyageAdd').addEventListener('click', checkCompleteness );
 });
 
