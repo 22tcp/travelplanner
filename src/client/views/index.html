@@ -32,9 +32,9 @@
               </span>
             </div>          
           </div>
-<!--
-          <div class="search_box"><button class="search_button ts-btn">Search Location</button></div>
--->
+
+          <div class="search_box"><button class="search_button ts-btn" id="apiquery">Query Environmentals</button></div>
+
           <div class="table-colon">
             <div class="table-l">Departure</div>
             <span id="datepicker" class="table-r"></span>
@@ -48,6 +48,7 @@
       <div class="mcm-stat">
         <div id="incomplete" class="important">Please enter a destination and date<br></div>
         <div id="duration" class="nodisplay">Trip is starting in <span id="numberofdays" class="tempdelta"></span> days</div>
+        <div id="error"></div>
       </div>
     </div>  
   </main>

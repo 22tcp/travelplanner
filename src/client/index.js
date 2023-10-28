@@ -3,23 +3,22 @@ import './styles/main.scss'
 
 //import * as bootstrap from 'bootstrap'
 
-import { handleSubmit } from './js/app.js'
-import { checkCompleteness } from './js/app.js'
+//import { handleSubmit } from './js/app.js'
+import { storageEvaluate } from './js/app.js'
+import { checkComplete } from './js/app.js'
+import { deleteTraveldata } from './js/app.js'
 import { addDateInput } from './js/app.js'
 import { timespan } from './js/app.js'
 import { addPicture } from './js/app.js'
-import { fetchCountries } from './js/app.js'
-export { handleSubmit }
+import { initialSearch } from './js/app.js'
 
-
-
-
+//export { handleSubmit }
 
 
 document.addEventListener('DOMContentLoaded', () => {
   // Add event listener to a button or any other element
-  const button = document.getElementById('myButton');
-  if (button == typeof (Object)) { button.addEventListener('click', handleSubmit); }
+  //const button = document.getElementById('myButton');
+  // if (button == typeof (Object)) { button.addEventListener('click', handleSubmit); }
 
   document.getElementById('destination').addEventListener(
     "keyup", (ev) => {
@@ -32,12 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout( () =>{
     document.getElementById('incomplete').classList.add('nodisplay')
   },3000)
+ 
+  
+  document.getElementById('vPicture').appendChild(addPicture() );
+  document.getElementById('datepicker').appendChild(addDateInput() );
 
-  fetchCountries();
+  storageEvaluate()
 
-  document.getElementById('vPicture').appendChild(addPicture());
-  document.getElementById('datepicker').appendChild(addDateInput());
-  document.getElementById('datepickerinput').addEventListener('blur', timespan );
-  document.getElementById('voyageAdd').addEventListener('click', checkCompleteness );
+  document.getElementById('datepickerinput').addEventListener('change', timespan );
+  document.getElementById('voyageAdd').addEventListener('click', checkComplete );
+  document.getElementById('voyageRemove').addEventListener('click', deleteTraveldata );
+  document.getElementById('apiquery').addEventListener('click', initialSearch );
 });
 
