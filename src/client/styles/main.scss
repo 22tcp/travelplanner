@@ -94,6 +94,21 @@ h3 {
    content: ": ";
 }
 
+.search_box {
+  background: none;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+}
+
+.search_button {
+  width: 300px;
+  height: 40px;
+  margin: 5px 0px 5px 0px;
+  padding: 2px 0px 2px 0px;
+  border-radius: 8px;
+}
+
 .table-l {
   text-align: left;
   padding: 3px 0px 0px 0px;

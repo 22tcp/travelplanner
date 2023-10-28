@@ -95,3 +95,42 @@ export function addDateInput() {
   element.classList.add("date-picker");
   return element;
 }
+
+import Pic from '../../static/travelcat.jpg'
+export function addPicture() {
+  
+  const myImage = new Image();
+  myImage.classList.add("ha-image");
+  myImage.src = Pic;
+  myImage.id = 'Pic';
+  return myImage;
+}
+
+export function fetchCountries() {
+
+  const countries = document.getElementById('country')
+  let Countries = {}
+  let htmlAppend = ""
+  fetch('https://restcountries.com/v3.1/all?fields=name,cca2').then( res => {
+    return res.json()
+  }).then(data => {
+    data.forEach(country => {
+      //console.log(country.name.common, country.cca2)
+      country.name.common = country.name.common.substring(0,25)
+      Countries[country.name.common] = country.cca2;
+      
+    })
+    let sortedCountries = Object.keys(Countries).sort().reduce(
+      (obj, key) => {
+        obj[key] = Countries[key]
+        return obj;
+      }, {}
+    )
+    for ( const key in sortedCountries ) {
+      htmlAppend += `<option value=${sortedCountries[key]}>${key}</option>`
+    }
+    countries.innerHTML = htmlAppend
+  }).catch(err => {
+    console.log(err)
+  })
+}

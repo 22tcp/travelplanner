@@ -1,21 +1,16 @@
 import './styles/main.scss'
 
-import Pic from '../static/travelcat.jpg'
+
 //import * as bootstrap from 'bootstrap'
 
 import { handleSubmit } from './js/app.js'
 import { checkCompleteness } from './js/app.js'
 import { addDateInput } from './js/app.js'
 import { timespan } from './js/app.js'
+import { addPicture } from './js/app.js'
+import { fetchCountries } from './js/app.js'
 export { handleSubmit }
 
-function addPicture() {
-  const myImage = new Image();
-  myImage.classList.add("ha-image");
-  myImage.src = Pic;
-  myImage.id = 'Pic';
-  return myImage;
-}
 
 
 
@@ -33,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   );
+
+  setTimeout( () =>{
+    document.getElementById('incomplete').classList.add('nodisplay')
+  },3000)
+
+  fetchCountries();
+
   document.getElementById('vPicture').appendChild(addPicture());
   document.getElementById('datepicker').appendChild(addDateInput());
   document.getElementById('datepickerinput').addEventListener('blur', timespan );

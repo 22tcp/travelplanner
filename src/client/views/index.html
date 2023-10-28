@@ -19,31 +19,38 @@
       </div>
       <div class="mcm-r">
           <div class="table-colon">
-            <div class="table-l"><label for="destination">Destination</label></div>
+            <div class="table-l"><label for="country">Country</label></div>
+            <div class="table-n">
+              
+                <select name="country" id="country" class="selection"></select>
+              
+            </div>
+            <div class="table-l"><label for="destination">City Name</label></div>
             <div class="table-n">
               <span class="table-n">                
                 <input id="destination" class="input-destination"/>              
               </span>
-            </div>
-            <div>Search now</div><div class=""><button>Find Location</button></div>
+            </div>          
+          </div>
+<!--
+          <div class="search_box"><button class="search_button ts-btn">Search Location</button></div>
+-->
+          <div class="table-colon">
             <div class="table-l">Departure</div>
             <span id="datepicker" class="table-r"></span>
-          </div>
+          </div>  
+
         <div class="two-boxes">
           <button class="ts-btn" id="voyageAdd">Add Voyage</button>
           <button class="ts-btn" id="voyageRemove">Remove Voyage</button>
         </div>
-        some information in this mcm-r area lets see how it reacts to overspill
       </div>
       <div class="mcm-stat">
-        <div id="incomplete" class="important">Please Enter A destination and date<br></div>
+        <div id="incomplete" class="important">Please enter a destination and date<br></div>
         <div id="duration" class="nodisplay">Trip is starting in <span id="numberofdays" class="tempdelta"></span> days</div>
       </div>
     </div>  
   </main>
-
-
-
 
   <footer class="footer">
 
