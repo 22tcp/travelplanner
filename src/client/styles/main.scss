@@ -6,7 +6,7 @@
 /* Color Theme b */
 
 :root {
-  --ma-light-bkg: #2885b38d;
+  --ma-light-bkg: #339dd18d;
   /*loblolly - blue colors from magezon*/
   
   --ma-medium-bkg: #84a7ba;
@@ -120,8 +120,10 @@ h3 {
 }
 
 .date-picker {
-  background: var(--ma-medium-bkg);
+  /* background: var(--ma-light-bkg); */
+  background: white;
   height:1.5em;
+  border-radius:8px;
 }
 
 .link-implant {
@@ -171,7 +173,8 @@ h3 {
 } 
 
 .tempdelta {
-  background-color: rgb(146, 242, 255);
+  /* background-color: rgb(146, 242, 255); */
+  background-color: white;
   margin: 0px;
   padding: 1px 1px 1px 3px;
   font-style: italic;

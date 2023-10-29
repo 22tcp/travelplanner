@@ -1,3 +1,12 @@
+const errElement = document.getElementById('error')
+
+const logError = (error) => {
+  errElement.classList.remove('nodisplay')
+  errElement.innerHTML=` ${error} `
+  setTimeout(() => {
+    errElement.classList.add('nodisplay')
+  }, 4000)
+}
 export function handleSubmit(event) {
   event.preventDefault()
 
@@ -11,30 +20,6 @@ export function handleSubmit(event) {
     .then(function (res) {
       document.getElementById('results').innerHTML = res.message
     })
-}
-
-export const queryWEB = async (url = '') => {
-  return await fetch(url, {
-    method: 'GET',
-  })
-    .catch(error => console.error(error));
-}
-
-export const uploadTo = async (url = '', data = {}) => {
-  const response = await fetch(url, {
-    method: 'POST',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-  });
-  try {
-    const status = await response.json();
-    return status;
-  } catch {
-    console.log("error;", error);
-  }
 }
 
 export const storageEvaluate = async ()  => {
@@ -69,7 +54,7 @@ export const checkComplete = () => {
     }, 4000))
   } else {
     incompobj.classList.add('nodisplay')
-    console.log("data complete, storing ")
+    logError("data complete - storing")
     localStorage.setItem("travelapp.dest", destdata.value)
     localStorage.setItem("travelapp.date", datedata.value)
     if (countrydata.value) {
@@ -158,13 +143,53 @@ async function _fetchCountries() {
     countries.innerHTML = htmlAppend
     if (localStorage.getItem("travelapp.country") ) {
       document.getElementById('country').value = localStorage.getItem("travelapp.country")
-      console.log(localStorage.getItem("travelapp.country"))
     }
   }).catch(err => {
-    console.log(err)
+    logError(err)
   })
 }
 
-export const initialSearch = () => {
-  console.log("button")
+const queryWEB = async (url = '') => {
+  return await fetch(url, {
+    method: 'GET',
+  })
+    .catch(error => logError("queryWEB " + error));
+}
+
+const uploadTo = async (url = '', data = {} ) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  });
+  try {
+    const status = await response.json();
+    return status;
+  } catch {
+    logError("uploadTo: " + error)    
+  }
+}
+
+export const initialSearch = async () => {
+
+  //gather facts
+  const destdata = document.getElementById('destination').value 
+  const datedata = document.getElementById('datepickerinput').value 
+  const countrydata = document.getElementById('country').value
+  if ( destdata == "" || datedata == "" ) {
+    logError("initialSearch: insufficient data")
+    return
+  }
+  console.log(" raw " + destdata, datedata, countrydata )
+
+  let data = {
+    dest: destdata,
+    date: datedata,
+    country: countrydata
+  }
+  console.log("data " + JSON.stringify( data ))
+  await uploadTo('/yAPI/querydata', data ).then( logError("upload complete") )
 }
