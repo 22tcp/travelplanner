@@ -1,8 +1,8 @@
 const errElement = document.getElementById('error')
 
-const logError = (error) => {
+const logMessage = (msg) => {
   errElement.classList.remove('nodisplay')
-  errElement.innerHTML=` ${error} `
+  errElement.innerHTML=` ${msg} `
   setTimeout(() => {
     errElement.classList.add('nodisplay')
   }, 4000)
@@ -54,7 +54,7 @@ export const checkComplete = () => {
     }, 4000))
   } else {
     incompobj.classList.add('nodisplay')
-    logError("data complete - storing")
+    logMessage("data complete - storing")
     localStorage.setItem("travelapp.dest", destdata.value)
     localStorage.setItem("travelapp.date", datedata.value)
     if (countrydata.value) {
@@ -145,15 +145,15 @@ async function _fetchCountries() {
       document.getElementById('country').value = localStorage.getItem("travelapp.country")
     }
   }).catch(err => {
-    logError(err)
+    logMessage(err)
   })
 }
 
-const queryWEB = async (url = '') => {
+const queryWeb = async (url = '') => {
   return await fetch(url, {
     method: 'GET',
   })
-    .catch(error => logError("queryWEB " + error));
+    .catch(error => logMessage("queryWeb " + error));
 }
 
 const uploadTo = async (url = '', data = {} ) => {
@@ -169,7 +169,7 @@ const uploadTo = async (url = '', data = {} ) => {
     const status = await response.json();
     return status;
   } catch {
-    logError("uploadTo: " + error)    
+    logMessage("uploadTo: " + error)    
   }
 }
 
@@ -180,16 +180,22 @@ export const initialSearch = async () => {
   const datedata = document.getElementById('datepickerinput').value 
   const countrydata = document.getElementById('country').value
   if ( destdata == "" || datedata == "" ) {
-    logError("initialSearch: insufficient data")
+    logMessage("initialSearch: insufficient data")
     return
   }
-  console.log(" raw " + destdata, datedata, countrydata )
-
   let data = {
     dest: destdata,
     date: datedata,
     country: countrydata
   }
   console.log("data " + JSON.stringify( data ))
-  await uploadTo('/yAPI/querydata', data ).then( logError("upload complete") )
+  await uploadTo('/yAPI/querydata', data ).then(
+     logMessage("upload complete")
+      ).then(
+       await queryWeb ( '/yAPI/getLocation' )
+         .then( async (geodata) => {
+          let gdata = await geodata.json()
+          console.log(gdata["geonames"][0])
+         })
+         )
 }
