@@ -1,25 +1,26 @@
 
-@import url("medium.scss") (max-width: 400px);
-@import url("medium.scss") (min-width: 401px) and (max-width: 900px);
-@import url("large.scss") (min-width: 901px);
+@import url("mobile.scss") (max-width: 499px);
+@import url("large.scss") (min-width: 500px);
 
 /* Color Theme b */
 
 :root {
-  --ma-light-bkg: #339dd18d;
-  /*loblolly - blue colors from magezon*/
+  --ma-light-bkg: #189b64d2;
+  /*slightly transparent strong green*/
   
-  --ma-medium-bkg: #84a7ba;
-  /* nepal */
+  --ma-medium-bkg: #4eb165;
+  /* grey-green */
 
-  --ma-strong-bkg: #5f7c9c;
-  /*wild blue yonder */
+  --ma-strong-bkg: #5f9c76;
+  /*wild green */
 
-  --ma-dark-bkg: #303655;
-  /* martinique */
+  --ma-dark-bkg: #6a943ad8;
+  /* dark green */
 
   --text-col: #0a0a0a;
   /* very dark grey*/
+
+  --brd-col: #9de9c3dc;
 }
 
 html {
@@ -86,14 +87,19 @@ h3 {
   grid-template-rows: 35px 25px;
   background: var(--ma-light-bkg);
   padding: 8px 4px 4px 8px;
-  border: white solid 1px;
-  border-radius: 8px;
+  border: var(--brd-col) solid 1px;
 }
 
  .table-colon > *:nth-child(even)::before {
    content: ": ";
 }
 
+.tcol-top {
+  border-radius: 8px 8px 0px 0px;
+}
+.tcol-bot {
+  border-radius: 0px 0px 8px 8px;
+}
 .search_box {
   background: none;
   text-align: center;
@@ -117,6 +123,20 @@ h3 {
 .table-n {
   text-align: left;
   padding: 2px 0px 0px 0px;
+}
+
+.ts-btn {
+  background: var(--ma-light-bkg);
+  padding: 4px 4px 4px 0px;
+  margin: 2px 2px 2px 0px;
+  font-size: 11pt;
+  border:var( --brd-col) solid 1px;
+  border-radius: 0px;
+  width: 300px;
+}
+
+.ts-btn:hover {
+  background: white;
 }
 
 .date-picker {
@@ -167,8 +187,7 @@ h3 {
 }
 
 .important{
-  background-color: rgb(18, 15, 172);
-  color: white;
+  color: rgb(87, 8, 119);
   padding: 4px;
 } 
 
@@ -176,7 +195,9 @@ h3 {
   /* background-color: rgb(146, 242, 255); */
   background-color: white;
   margin: 0px;
-  padding: 1px 1px 1px 3px;
+  padding: 4px 1px 4px 5px;
+  border-radius: 50%;
   font-style: italic;
+
 }
 

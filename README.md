@@ -15,4 +15,6 @@ git clone -- git@github.com:22tcp/travelapp.git --
 - ```npm start``` to start the app
 - this app runs on localhost:8081, but you can of course edit that in index.js  
   
-http://api.geonames.org/postalCodeSearchJSON?placename=Bonn&username=thsbntrvlapp&password=xyz
+  To run there must be a .env file with 
+  API user/passwords for geonames, weatherbit and pixabay
+  and a sessionkey
