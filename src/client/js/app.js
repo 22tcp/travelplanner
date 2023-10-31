@@ -1,10 +1,10 @@
-const errElement = document.getElementById('error')
+const msgElement = document.getElementById('messages')
 
 const logMessage = (msg) => {
-  errElement.classList.remove('nodisplay')
-  errElement.innerHTML=` ${msg} `
+  msgElement.classList.remove('nodisplay')
+  msgElement.innerHTML=` ${msg} `
   setTimeout(() => {
-    errElement.classList.add('nodisplay')
+    msgElement.classList.add('nodisplay')
   }, 4000)
 }
 export function handleSubmit(event) {
@@ -113,15 +113,19 @@ export function addPicture() {
   return myImage;
 }
 
+/* Populate Country-drop-down because city names are not unique */
 async function _fetchCountries() {
 
   const countries = document.getElementById('country')
   let Countries = {}
   let htmlAppend = ""
+  logMessage("populating country dropdown - please wait")
   fetch('https://restcountries.com/v3.1/all?fields=name,cca2').then(res => {
     return res.json()
+    
   }).then(data => {
     data.forEach(country => {
+      logMessage("country data loaded")
       //console.log(country.name.common, country.cca2)
       country.name.common = country.name.common.substring(0, 25)
       Countries[country.name.common] = country.cca2;
@@ -189,6 +193,9 @@ export const initialSearch = async () => {
     country: countrydata
   }
   console.log("data " + JSON.stringify( data ))
+  /* Internal API call 
+     City, Date, country
+  */
   await uploadTo('/yAPI/querydata', data ).then(
      logMessage("upload complete")
       ).then(

@@ -15,7 +15,8 @@
     "sl st sr"
     "ft ft ft";
   row-gap: 0px;
-  background: var(--ma-light-bkg);
+  //background: var(--ma-dark-bkg);
+  background: rgb(36, 36, 36);
   border-radius: 10px 10px 10px 10px;
   margin: 2px;
 }
@@ -32,7 +33,7 @@
     "lft  rgt"
     "lft2  rgt2"
     "stat stat";
-  column-gap: 10px; 
+  column-gap: 0px; 
   grid-template-columns:  300px 300px;
   grid-template-rows: 200px 100px auto;
   row-gap: 5px;
@@ -52,7 +53,6 @@
 
 .mcm-r {
   grid-area: rgt;
-  
 }
 
 .mcm-l2 {
@@ -87,7 +87,7 @@
 .two-boxes {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 h1 {
@@ -136,7 +136,7 @@ h4 {
   justify-content: center;
   overflow-y: hidden;
   border-radius: 20px 20px 20px 20px;
-  background: var(--ma-dark-bkg);
+  background: var(--ma-light-bkg);
 }
 
 .hd-image {

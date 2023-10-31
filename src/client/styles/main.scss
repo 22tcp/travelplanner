@@ -5,19 +5,19 @@
 /* Color Theme b */
 
 :root {
-  --ma-light-bkg: #189b64d2;
+  --ma-light-bkg: #696969;
   /*slightly transparent strong green*/
   
-  --ma-medium-bkg: #4eb165;
+  --ma-medium-bkg: #2e6b3c;
   /* grey-green */
 
-  --ma-strong-bkg: #5f9c76;
+  --ma-strong-bkg: #a8a8a8;
   /*wild green */
 
-  --ma-dark-bkg: #6a943ad8;
+  --ma-dark-bkg: #53722ff5;
   /* dark green */
 
-  --text-col: #0a0a0a;
+  --text-col: hsl(0, 0%, 100%);
   /* very dark grey*/
 
   --brd-col: #9de9c3dc;
@@ -82,12 +82,13 @@ h3 {
 }
 
 .table-colon {
+  color:white;
   display: grid;
   grid-template-columns: max-content max-content;
   grid-template-rows: 35px 25px;
-  background: var(--ma-light-bkg);
+  //background: var(--ma-light-bkg);
   padding: 8px 4px 4px 8px;
-  border: var(--brd-col) solid 1px;
+  //border: var(--brd-col) solid 1px;
 }
 
  .table-colon > *:nth-child(even)::before {
@@ -125,18 +126,37 @@ h3 {
   padding: 2px 0px 0px 0px;
 }
 
-.ts-btn {
-  background: var(--ma-light-bkg);
-  padding: 4px 4px 4px 0px;
-  margin: 2px 2px 2px 0px;
-  font-size: 11pt;
-  border:var( --brd-col) solid 1px;
-  border-radius: 0px;
-  width: 300px;
+.input-destination {
+  width:180px;
 }
 
-.ts-btn:hover {
-  background: white;
+.btn-pushable {
+  width: 290px;
+  margin: 14px 0px 0px 0px;
+  background: var(--ma-strong-bkg);
+  border-radius: 8px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+.btn-front {
+  display: block;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-size: 11pt;
+  background: var(--ma-light-bkg);
+  color: white;
+  transform: translateY(-4px);
+}
+
+.btn-pushable:hover {
+  background-color: white;
+}
+
+.btn-pushable:active .btn-front {
+  transform: translateY(-2px);
 }
 
 .date-picker {
@@ -191,9 +211,17 @@ h3 {
   padding: 4px;
 } 
 
+.duration {
+  color:black;
+  background-color:white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
 .tempdelta {
   /* background-color: rgb(146, 242, 255); */
   background-color: white;
+  border: 1px solid black;
   margin: 0px;
   padding: 4px 1px 4px 5px;
   border-radius: 50%;
@@ -201,3 +229,6 @@ h3 {
 
 }
 
+.message-area {
+  color: var(--text-col);
+}

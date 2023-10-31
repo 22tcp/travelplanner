@@ -22,15 +22,15 @@ router.get("/getLocation", function (req,res) {
     console.log("getLocation :" + url )
     const response = fetch(url)
     .then ( response => response.json() )
-    .then ( data => {
-      console.log(" response " + JSON.stringify(data) )
+    .then ( async(geodata) => {
+      let gdata = await geodata      
+      console.log( "longitude " + gdata["geonames"][0]["lng"])
+      console.log( "latitude " + gdata["geonames"][0]["lat"])
       
-      res.status(202).send( data )
+      res.status(202).send( gdata )
       res.end()
     })
   }
-}
-
-)
+})
 
 module.exports = router
