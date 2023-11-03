@@ -1,12 +1,13 @@
 const msgElement = document.getElementById('messages')
 
-const logMessage = (msg) => {
+const _logMessage = (msg) => {
   msgElement.classList.remove('nodisplay')
   msgElement.innerHTML=` ${msg} `
   setTimeout(() => {
     msgElement.classList.add('nodisplay')
   }, 4000)
 }
+
 export function handleSubmit(event) {
   event.preventDefault()
 
@@ -54,7 +55,7 @@ export const checkComplete = () => {
     }, 4000))
   } else {
     incompobj.classList.add('nodisplay')
-    logMessage("data complete - storing")
+    _logMessage("data complete - storing")
     localStorage.setItem("travelapp.dest", destdata.value)
     localStorage.setItem("travelapp.date", datedata.value)
     if (countrydata.value) {
@@ -119,13 +120,13 @@ async function _fetchCountries() {
   const countries = document.getElementById('country')
   let Countries = {}
   let htmlAppend = ""
-  logMessage("populating country dropdown - please wait")
+  _logMessage("populating country dropdown - please wait")
   fetch('https://restcountries.com/v3.1/all?fields=name,cca2').then(res => {
     return res.json()
     
   }).then(data => {
     data.forEach(country => {
-      logMessage("country data loaded")
+      _logMessage("country data loaded")
       //console.log(country.name.common, country.cca2)
       country.name.common = country.name.common.substring(0, 25)
       Countries[country.name.common] = country.cca2;
@@ -149,7 +150,7 @@ async function _fetchCountries() {
       document.getElementById('country').value = localStorage.getItem("travelapp.country")
     }
   }).catch(err => {
-    logMessage(err)
+    _logMessage(err)
   })
 }
 
@@ -157,7 +158,7 @@ const queryWeb = async (url = '') => {
   return await fetch(url, {
     method: 'GET',
   })
-    .catch(error => logMessage("queryWeb " + error));
+    .catch(error => _logMessage("queryWeb " + error));
 }
 
 const uploadTo = async (url = '', data = {} ) => {
@@ -173,7 +174,7 @@ const uploadTo = async (url = '', data = {} ) => {
     const status = await response.json();
     return status;
   } catch {
-    logMessage("uploadTo: " + error)    
+    _logMessage("uploadTo: " + error)    
   }
 }
 
@@ -184,7 +185,7 @@ export const initialSearch = async () => {
   const datedata = document.getElementById('datepickerinput').value 
   const countrydata = document.getElementById('country').value
   if ( destdata == "" || datedata == "" ) {
-    logMessage("initialSearch: insufficient data")
+    _logMessage("initialSearch: insufficient data")
     return
   }
   let data = {
@@ -197,7 +198,7 @@ export const initialSearch = async () => {
      City, Date, country
   */
   await uploadTo('/yAPI/querydata', data ).then(
-     logMessage("upload complete")
+     _logMessage("upload complete")
       ).then(
        await queryWeb ( '/yAPI/getLocation' )
          .then( async (geodata) => {

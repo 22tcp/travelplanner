@@ -8,8 +8,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const queryHub = require('./queryHub.js')
 const app = express()
-
-
 app.use(express.static('dist'))
 app.use(cors())
 app.use(bodyParser.json())

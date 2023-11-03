@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const util = require('util')
+const wmo = require('./wmo.js')
 
 router.post("/querydata", function (req,res) {
   let _data = req.body
@@ -15,21 +15,37 @@ router.post("/querydata", function (req,res) {
 router.get("/getLocation", function (req,res) {
   
   if ( req.session.dest ) {
-    let url = `http://api.geonames.org/searchJSON?q=${req.session.dest}&maxRows=1&username=${process.env.geonames_user}`
+    //build up query string for geonames
+    let urlgn = `http://api.geonames.org/searchJSON?q=${req.session.dest}&maxRows=1&username=${process.env.geonames_user}`
     if ( req.session.country ) {
-      url += `&country=${req.session.country}`
+      urlgn += `&country=${req.session.country}`
     }
-    console.log("getLocation :" + url )
-    const response = fetch(url)
+    //console.log("getLocation :" + urlgn )
+    const response = fetch(urlgn)
     .then ( response => response.json() )
     .then ( async(geodata) => {
-      let gdata = await geodata      
-      console.log( "longitude " + gdata["geonames"][0]["lng"])
-      console.log( "latitude " + gdata["geonames"][0]["lat"])
+      let gdata = await geodata    
+      console.log(gdata["geonames"][0]["lng"])  
+      console.log(gdata["geonames"][0]["lat"])
+      req.session.lng = gdata["geonames"][0]["lng"]
+      req.session.lat = gdata["geonames"][0]["lat"]
+      req.session.querydate = "2022" + req.session.date.substring(4)
       
+      
+      
+      //build up query string for weatherbit
+      req.session.lng = parseFloat(req.session.lng).toFixed(2)
+      req.session.lat = parseFloat(req.session.lat).toFixed(2)
+      console.log(req.session)
+      req.session.urlom = `https://archive-api.open-meteo.com/v1/archive?latitude=${req.session.lat}&longitude=${req.session.lng}&start_date=${req.session.querydate}` +
+      `&end_date=${req.session.querydate}&daily=weathercode,temperature_2m_mean,precipitation_sum&timezone=Europe%2FBerlin`
+      console.log("url" + req.session.urlom)
+      console.log( "wmo-test " + wmo[45])
       res.status(202).send( gdata )
       res.end()
     })
+
+    
   }
 })
 
