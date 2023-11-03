@@ -123,7 +123,7 @@ h3 {
 
 .table-n {
   text-align: left;
-  padding: 2px 0px 0px 0px;
+  padding: 3px 0px 0px 0px;
 }
 
 .input-destination {
@@ -207,7 +207,7 @@ h3 {
 }
 
 .important{
-  color: rgb(87, 8, 119);
+  color: rgb(255, 247, 132);
   padding: 4px;
 } 
 
@@ -229,5 +229,11 @@ h3 {
 }
 
 .message-area {
+  text-align: left;
+  color: var(--text-col);
+}
+
+.weather {
+  margin: 15px 0px 5px 0px;
   color: var(--text-col);
 }

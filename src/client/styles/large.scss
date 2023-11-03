@@ -7,7 +7,7 @@
   display:grid;
   justify-content: center;
   justify-self: center;
-  grid-template-columns: 4px 600px 4px;
+  grid-template-columns: 1px 600px 1px;
   grid-template-rows: auto minmax( 300px, 1fr ) 30px 30px ;
   grid-template-areas:
     "hd hd hd"
@@ -35,19 +35,22 @@
     "stat stat";
   column-gap: 0px; 
   grid-template-columns:  300px 300px;
-  grid-template-rows: 200px 100px auto;
+  grid-template-rows: min-content min-content min-content;
   row-gap: 5px;
 }
 
 .mcm-l {
   grid-area: lft;
+  display:inline-block;
   justify-self: left;
 }
 
 .mcm-stat {
-  grid-area: stat;
-  justify-self: center;
-  padding: 4px 20px 4px 20px;
+  display: flex;
+  flex-direction: column;
+  grid-area: lft;
+  justify-self: top;
+  padding: 0px 0px 0px 0px;
   border-radius: 8px;
 }
 
@@ -204,7 +207,6 @@ h4 {
 }
 
 .footer {
-  display:flex;
   grid-area: ft;
   justify-content: center;
   overflow-y: hidden;
@@ -239,12 +241,12 @@ h4 {
 }
 
 .ha-image {
-  display:inline-block;
+  display:flex;
+  flex-direction: column;
   border: none;
   background-color: transparent;
-  max-height:100%;
-  width:auto;
-  height: auto;
+  max-height:200px;
+  max-width:300px;
   padding: 4px;
   margin: 1px 2px 16px 2px;
 }

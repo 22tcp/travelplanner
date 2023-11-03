@@ -11,58 +11,66 @@
 <body class="ts-container">
 
   <header class="header">
-    <h1>Travel Planner &check;</h1>
+    <h1>Travel Countdown &heartsuit;</h1>
   </header>
   <main class="main">
     <div class="multi-col-main">
-      <div class="mcm-l" id="vPicture">
-      </div>
-      <div class="mcm-r">
-          <div class="table-colon tcol-top">
-            <div class="table-l"><label for="country">Country</label></div>
-            <div class="table-n">
-              
-                <select name="country" id="country" autocomplete="country" class="selection"></select>
-              
-            </div>
-            <div class="table-l"><label for="destination">City Name</label></div>
-            <div class="table-n">
-              <span class="table-n">                
-                <input id="destination" class="input-destination" required minlength="3" maxlength="24"/>              
-              </span>
-            </div>          
-          </div>
-
-          <div class="search_box"><button class="btn-pushable" id="apiquery"><span class="btn-front">
-            Query Environmentals</span></button>
-          </div>
-
-          <div class="table-colon tcol-bot">
-            <div class="table-l">Departure</div>
-            <span id="datepicker" class="table-r"></span>
-          </div>  
-          
-        <div class="two-boxes">
-          <button class="btn-pushable" id="voyageAdd"><span class="btn-front">
-            Add Voyage</span>
-          </button>
-          <button class="btn-pushable" id="voyageRemove"><span class="btn-front">
-            Remove Voyage</span>
-          </button>
-        </div>
-      </div>
-      <div class="mcm-stat">
+      <div class="mcm-l">
+        <div class="" id="vPicture"></div>
         <div id="incomplete" class="important">Please enter a destination and date<br></div>
         <div id="duration" class="nodisplay duration">
           Trip is starting in <span id="numberofdays" class="tempdelta"></span> days
         </div>
-        
+        <div id="messages" class="message-area"></div>
       </div>
-    </div>  
+      <div class="mcm-r">
+        <div class="table-colon">
+          <div class="table-l"><label for="country">Country</label></div>
+          <div class="table-n">
+
+            <select name="country" id="country" autocomplete="country" class="selection"></select>
+
+          </div>
+          <div class="table-l"><label for="destination">City Name</label></div>
+          <div class="table-n">
+            <span class="table-n">
+              <input id="destination" class="input-destination" required minlength="3" maxlength="24" />
+            </span>
+          </div>
+        </div>
+        <div class="table-colon">
+          <div class="table-l">Departure</div>
+          <span id="datepicker" class="table-n"></span>
+          <div class="table-l">Avg. degrees</div>
+          <span id="meantemp" class="table-n"></span>
+          <div class="table-l">Precipitation</div>
+          <span id="precipitation" class="table-n"></span> 
+        </div>
+        <div class="weather"><u>Typical weather</u></div>
+        <span class="weather" id="weather"></span>
+        
+        
+        <div class="search_box"><button class="btn-pushable" id="apiquery"><span class="btn-front">
+              Query Environmentals</span></button>
+        </div>
+        <div class="two-boxes">
+          <button class="btn-pushable" id="voyageAdd"><span class="btn-front">
+              Add Voyage</span>
+          </button>
+          <button class="btn-pushable" id="voyageRemove"><span class="btn-front">
+              Remove Voyage</span>
+          </button>
+        </div>
+ 
+      </div>
+      <div class="mcm-stat">
+
+      </div>
+    </div>
   </main>
 
   <footer class="footer">
-  <div id="messages" class="message-area"></div>
+    
   </footer>
 
   <!-- <script>

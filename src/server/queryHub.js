@@ -29,23 +29,30 @@ router.get("/getLocation", function (req,res) {
       console.log(gdata["geonames"][0]["lat"])
       req.session.lng = gdata["geonames"][0]["lng"]
       req.session.lat = gdata["geonames"][0]["lat"]
-      req.session.querydate = "2022" + req.session.date.substring(4)
+      req.session.querydate = "2022" + req.session.date.substring(4)      
       
       
-      
-      //build up query string for weatherbit
+      //build up query string for open-meteo because weatherbit went greedy
       req.session.lng = parseFloat(req.session.lng).toFixed(2)
       req.session.lat = parseFloat(req.session.lat).toFixed(2)
-      console.log(req.session)
+      //console.log("session:" + req.session)
       req.session.urlom = `https://archive-api.open-meteo.com/v1/archive?latitude=${req.session.lat}&longitude=${req.session.lng}&start_date=${req.session.querydate}` +
       `&end_date=${req.session.querydate}&daily=weathercode,temperature_2m_mean,precipitation_sum&timezone=Europe%2FBerlin`
-      console.log("url" + req.session.urlom)
-      console.log( "wmo-test " + wmo[45])
-      res.status(202).send( gdata )
-      res.end()
-    })
+      //console.log("url" + req.session.urlom)
+      
+      const responseOM = fetch(req.session.urlom)
+      . then ( responseOM => responseOM.json() )
+      .then ( async (omdata) => {
+        let odata = await omdata
+        req.session.omdata = odata
 
-    
+        console.log("raw data " + JSON.stringify(req.session.omdata))
+        req.session.wmdactual = wmo[req.session.omdata.daily["weathercode"]]
+        console.log(req.session.wmdactual)
+        res.status(202).send( req.session )
+      res.end()
+      })
+    })    
   }
 })
 

@@ -106,7 +106,6 @@ export function addDateInput() {
 
 import Pic from '../../static/travelcat.jpg'
 export function addPicture() {
-
   const myImage = new Image();
   myImage.classList.add("ha-image");
   myImage.src = Pic;
@@ -181,6 +180,9 @@ const uploadTo = async (url = '', data = {} ) => {
 export const initialSearch = async () => {
 
   //gather facts
+  const meantemp = document.getElementById('meantemp')
+  const precipitation = document.getElementById('precipitation')
+  const weather = document.getElementById('weather')
   const destdata = document.getElementById('destination').value 
   const datedata = document.getElementById('datepickerinput').value 
   const countrydata = document.getElementById('country').value
@@ -193,17 +195,25 @@ export const initialSearch = async () => {
     date: datedata,
     country: countrydata
   }
-  console.log("data " + JSON.stringify( data ))
+  //console.log("data " + JSON.stringify( data ))
   /* Internal API call 
      City, Date, country
   */
   await uploadTo('/yAPI/querydata', data ).then(
-     _logMessage("upload complete")
-      ).then(
-       await queryWeb ( '/yAPI/getLocation' )
-         .then( async (geodata) => {
-          let gdata = await geodata.json()
-          console.log(gdata["geonames"][0])
+     _logMessage("upload complete"))
+     .then(
+         await queryWeb( '/yAPI/getLocation' )
+       .then( async (sessiondata) => {
+          let sdata = await sessiondata.json()
+          //console.log(Object.entries(sdata))
+          
+          meantemp.innerHTML = sdata["omdata"]["daily"]["temperature_2m_mean"] + "&#8451;"
+          precipitation.innerHTML = sdata["omdata"]["daily"]["precipitation_sum"] + "&#13212;"
+          weather.innerHTML = sdata["wmdactual"]
+          //console.log("mean temp: " + sdata["omdata"]["daily"]["temperature_2m_mean"])
+          //console.log("precipitation: " + sdata["omdata"]["daily"]["precipitation_sum"])
+          //onsole.log("weather description: " + sdata["wmdactual"])
+
          })
-         )
+        )
 }
