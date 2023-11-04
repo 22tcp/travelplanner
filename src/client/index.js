@@ -16,17 +16,14 @@ import { initialSearch } from './js/app.js'
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Add event listener to a button or any other element
-  //const button = document.getElementById('myButton');
-  // if (button == typeof (Object)) { button.addEventListener('click', handleSubmit); }
-
+//does not look pretty when hitting enter in the box
   document.getElementById('destination').addEventListener(
     "keyup", (ev) => {
       if (ev.key === 'Enter' || ev.code === 13) {
         ev.preventDefault;
       }
     }
-  );
+  )
 
   setTimeout( () =>{
     document.getElementById('incomplete').classList.add('nodisplay')

@@ -202,7 +202,7 @@ export const initialSearch = async () => {
   await uploadTo('/yAPI/querydata', data ).then(
      _logMessage("upload complete"))
      .then(
-         await queryWeb( '/yAPI/getLocation' )
+         await queryWeb( '/yAPI/getEverything' )
        .then( async (sessiondata) => {
           let sdata = await sessiondata.json()
           //console.log(Object.entries(sdata))
@@ -213,7 +213,7 @@ export const initialSearch = async () => {
           //console.log("mean temp: " + sdata["omdata"]["daily"]["temperature_2m_mean"])
           //console.log("precipitation: " + sdata["omdata"]["daily"]["precipitation_sum"])
           //onsole.log("weather description: " + sdata["wmdactual"])
-
+          console.log("link to image " + sdata["pblink"])
          })
         )
 }
