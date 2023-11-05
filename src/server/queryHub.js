@@ -29,8 +29,16 @@ router.get("/getEverything", function (req, res) {
         let gdata = await geodata
         //console.log(gdata["geonames"][0]["lng"])  
         //console.log(gdata["geonames"][0]["lat"])
-        req.session.lng = gdata["geonames"][0]["lng"]
-        req.session.lat = gdata["geonames"][0]["lat"]
+        if ( gdata["totalResultsCount"] > 0 ) { req.session.lng = gdata["geonames"][0]["lng"] }
+        else { 
+          res.end("404")
+          return
+           }
+        if ( gdata["totalResultsCount"] > 0 ) { req.session.lat = gdata["geonames"][0]["lat"] }
+        else { 
+          res.end("404")
+          return
+           }
         req.session.querydate = "2022" + req.session.date.substring(4)
 
         //build up query string for open-meteo because weatherbit went greedy
@@ -63,8 +71,8 @@ router.get("/getEverything", function (req, res) {
                   if ( pdata["total"] > 0 ) {
                     req.session.pblink = pdata["hits"][0]["webformatURL"]
                     //console.log(req.session.pblink)
-                    res.status(202).send(req.session)
-                    res.end()
+                    res.send(req.session)
+                    res.end(200)
                   } else {
                     req.session.urlpb2 = `https://pixabay.com/api/?key=${process.env.pixabay_key}&q=${req.session.fullcountry}&image_type=photo`
                     const incomingPB2 = fetch(req.session.urlpb2)
@@ -72,18 +80,17 @@ router.get("/getEverything", function (req, res) {
                       .then(async (pbdata2) => {
                         let pdata2 = await pbdata2
                         req.session.pblink = pdata2["hits"][0]["webformatURL"]
-                        console.log("search url " + req.session.urlpb2)
-                        console.log("else :" + req.session.pblink)
-                        res.status(202).send(req.session)
-                        res.end()
+                        //console.log("search url " + req.session.urlpb2)
+                        //console.log("else :" + req.session.pblink)
+                        res.send(req.session)
+                        res.end(200)
                       })
                   }            
 
                 })
               //console.log(req.session.pblink)
             } else { 
-              res.status(404).send("Not Found")
-              res.end()
+              res.end(404)
             }
           })
       })

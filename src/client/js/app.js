@@ -43,8 +43,8 @@ export const checkComplete = () => {
   const incompobj = document.getElementById('incomplete')
   const duration = document.getElementById('duration')
   if (lengthdestdata < 1 || lengthdatedata < 1) {
-    console.log(lengthdestdata + " lenght dest")
-    console.log(lengthdatedata + " length date")
+    //console.log(lengthdestdata + " lenght dest")
+    //console.log(lengthdatedata + " length date")
     incompobj.classList.remove('nodisplay')
     destdata.focus()
     incompobj.classList.add('important')
@@ -207,16 +207,24 @@ export const initialSearch = async () => {
          await queryWeb( '/yAPI/getEverything' )
        .then( async (sessiondata) => {
           let sdata = await sessiondata.json()
-          //console.log(Object.entries(sdata))
-          
+          //console.log(sdata)
+          if (sdata == "404") {
+             _logMessage("no such city found")
+             return
+          }
           meantemp.innerHTML = sdata["omdata"]["daily"]["temperature_2m_mean"] + "&#8451;"
           precipitation.innerHTML = sdata["omdata"]["daily"]["precipitation_sum"] + "&#13212;"
           weather.innerHTML = sdata["wmdactual"]
           //console.log("mean temp: " + sdata["omdata"]["daily"]["temperature_2m_mean"])
           //console.log("precipitation: " + sdata["omdata"]["daily"]["precipitation_sum"])
           //onsole.log("weather description: " + sdata["wmdactual"])
-          console.log("link to image " + sdata["pblink"])
-          document.getElementById('Pic').src=sdata["pblink"]
+          //console.log("link to image " + sdata["pblink"])
+          if ( sdata["pblink"] == "Not Found" ) {
+            _logMessage("no image found: using boss selfie")
+            document.getElementById('Pic').src="/travelcat.jpg"
+          } else {
+            document.getElementById('Pic').src=sdata["pblink"]
+          }
          })
         )
 }
