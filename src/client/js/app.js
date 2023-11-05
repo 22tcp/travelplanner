@@ -186,6 +186,7 @@ export const initialSearch = async () => {
   const destdata = document.getElementById('destination').value 
   const datedata = document.getElementById('datepickerinput').value 
   const countrydata = document.getElementById('country').value
+  const fullcountrydata = document.getElementById('country').selectedOptions[0]["innerText"]
   if ( destdata == "" || datedata == "" ) {
     _logMessage("initialSearch: insufficient data")
     return
@@ -193,7 +194,8 @@ export const initialSearch = async () => {
   let data = {
     dest: destdata,
     date: datedata,
-    country: countrydata
+    country: countrydata,
+    fullcountry: fullcountrydata
   }
   //console.log("data " + JSON.stringify( data ))
   /* Internal API call 
@@ -214,6 +216,7 @@ export const initialSearch = async () => {
           //console.log("precipitation: " + sdata["omdata"]["daily"]["precipitation_sum"])
           //onsole.log("weather description: " + sdata["wmdactual"])
           console.log("link to image " + sdata["pblink"])
+          document.getElementById('Pic').src=sdata["pblink"]
          })
         )
 }

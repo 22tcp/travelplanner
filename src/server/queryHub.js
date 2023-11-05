@@ -8,6 +8,7 @@ router.post("/querydata", function (req, res) {
   req.session.dest = _data["dest"]
   req.session.date = _data["date"]
   req.session.country = _data["country"]
+  req.session.fullcountry = _data["fullcountry"]
   res.status(202).send({
     message: "OK"
   })
@@ -54,30 +55,35 @@ router.get("/getEverything", function (req, res) {
             //if there is valid data the city name is good to get an image
             if (req.session.lng && req.session.lat) {
               req.session.urlpb = `https://pixabay.com/api/?key=${process.env.pixabay_key}&q=${req.session.dest}&image_type=photo`
-              console.log(req.session.urlpb)
+              //console.log(req.session.urlpb)
               const incomingPB = fetch(req.session.urlpb)
                 .then(incomingPB => incomingPB.json())
                 .then(async (pbdata) => {
                   let pdata = await pbdata
-                  if ( pdata["hits"][0]["webformatURL"] ) {
+                  if ( pdata["total"] > 0 ) {
                     req.session.pblink = pdata["hits"][0]["webformatURL"]
-                    console.log(req.session.pblink)
+                    //console.log(req.session.pblink)
+                    res.status(202).send(req.session)
+                    res.end()
                   } else {
-                    req.session.urlpb2 = `https://pixabay.com/api/?key=${process.env.pixabay_key}&q=${req.session.country}&image_type=photo`
-                    const responsePB = fetch(req.session.urlpb2)
+                    req.session.urlpb2 = `https://pixabay.com/api/?key=${process.env.pixabay_key}&q=${req.session.fullcountry}&image_type=photo`
+                    const incomingPB2 = fetch(req.session.urlpb2)
                       .then(incomingPB2 => incomingPB2.json())
                       .then(async (pbdata2) => {
                         let pdata2 = await pbdata2
                         req.session.pblink = pdata2["hits"][0]["webformatURL"]
+                        console.log("search url " + req.session.urlpb2)
                         console.log("else :" + req.session.pblink)
+                        res.status(202).send(req.session)
+                        res.end()
                       })
                   }            
-                  res.status(202).send(req.session)
-                  res.end()
+
                 })
               //console.log(req.session.pblink)
-            
-
+            } else { 
+              res.status(404).send("Not Found")
+              res.end()
             }
           })
       })
