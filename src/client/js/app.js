@@ -205,7 +205,7 @@ export const initialSearch = async () => {
           weather.innerHTML = sdata["wmdactual"]
           //console.log("mean temp: " + sdata["omdata"]["daily"]["temperature_2m_mean"])
           //console.log("precipitation: " + sdata["omdata"]["daily"]["precipitation_sum"])
-          //onsole.log("weather description: " + sdata["wmdactual"])
+          //console.log("weather description: " + sdata["wmdactual"])
           //console.log("link to image " + sdata["pblink"])
           if ( sdata["pblink"] == "Not Found" ) {
             _logMessage("no image found: using boss selfie")
