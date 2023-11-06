@@ -1,6 +1,6 @@
 
-@import url("mobile.scss") (max-width: 499px);
-@import url("large.scss") (min-width: 500px);
+@import url("mobile.scss") (max-width: 599px);
+@import url("large.scss") (min-width: 600px);
 
 /* Color Theme b */
 
@@ -101,12 +101,7 @@ h3 {
 .tcol-bot {
   border-radius: 0px 0px 8px 8px;
 }
-.search_box {
-  background: none;
-  text-align: center;
-  border-radius: 8px;
-  border: none;
-}
+
 
 .search_button {
   width: 300px;
