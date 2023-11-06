@@ -8,21 +8,6 @@ const _logMessage = (msg) => {
   }, 4000)
 }
 
-export function handleSubmit(event) {
-  event.preventDefault()
-
-  // check what text was put into the form field
-  let formText = document.getElementById('name').value
-  checkForName(formText)
-
-  console.log("::: Form Submitted :::")
-  fetch('http://localhost:8081/test')
-    .then(res => res.json())
-    .then(function (res) {
-      document.getElementById('results').innerHTML = res.message
-    })
-}
-
 export const storageEvaluate = async ()  => {
   _fetchCountries()
   if ( localStorage.getItem("travelapp.dest") &&
@@ -31,6 +16,9 @@ export const storageEvaluate = async ()  => {
     document.getElementById('destination').value = localStorage.getItem("travelapp.dest")
     document.getElementById('datepickerinput').value = localStorage.getItem("travelapp.date")
     timespan()
+  }
+  if( localStorage.getItem("travelapp.image") ) {
+    document.getElementById('Pic').src=localStorage.getItem("travelapp.image")
   }
 }
 
@@ -224,6 +212,8 @@ export const initialSearch = async () => {
             document.getElementById('Pic').src="/travelcat.jpg"
           } else {
             document.getElementById('Pic').src=sdata["pblink"]
+            localStorage.setItem("travelapp.image", sdata["pblink"])
+
           }
          })
         )
