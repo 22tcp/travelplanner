@@ -30,7 +30,7 @@ sessionkey=
 pixabay_key
 
 the app uses another API but that one does not use credentials,
-it's open-meteo.com and had to replace weatherbit because paywall.
+it's open-meteo.com - it had to replace weatherbit because they erected a paywall.
 
 
 

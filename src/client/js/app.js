@@ -53,7 +53,7 @@ export const checkComplete = () => {
 }
 
 export const deleteTraveldata = () => {
-  ["dest", "date", "country"].forEach(key =>
+  ["dest", "date", "country", "image"].forEach(key =>
     localStorage.removeItem(`travelapp.${key}`
     ))
   document.getElementById('destination').value = ''
@@ -113,7 +113,7 @@ async function _fetchCountries() {
     
   }).then(data => {
     data.forEach(country => {
-      _logMessage("country data loaded")
+      _logMessage("country list complete")
       //console.log(country.name.common, country.cca2)
       country.name.common = country.name.common.substring(0, 25)
       Countries[country.name.common] = country.cca2;
@@ -176,7 +176,7 @@ export const initialSearch = async () => {
   const countrydata = document.getElementById('country').value
   const fullcountrydata = document.getElementById('country').selectedOptions[0]["innerText"]
   if ( destdata == "" || datedata == "" ) {
-    _logMessage("initialSearch: insufficient data")
+    _logMessage("please enter more data")
     return
   }
   let data = {

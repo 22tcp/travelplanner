@@ -15,13 +15,14 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+//The syntax for samesite is all over the place, so i use all
 app.use(session(  {
   secret: process.env.sessionkey,
   resave: true,
   secure: false,
   saveUninitialized: true,
   name: 'travelplanner',
-  cookie: { 'samesite': 'lax', httpOnly: false }
+  cookie: { 'sameSite': 'lax','SameSite':'lax','samesite': 'lax', httpOnly: false }
 }))
 
 console.log()

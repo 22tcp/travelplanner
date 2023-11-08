@@ -224,8 +224,15 @@ h3 {
 }
 
 .message-area {
-  text-align: left;
   color: var(--text-col);
+  border: 1px solid grey;
+  border-radius: 8px;
+  animation: blinkblink 1s linear infinite;
+} 
+@keyframes blinkblink { 
+  50% {
+    opacity: 0;
+  }
 }
 
 .weather {
