@@ -1,9 +1,40 @@
-//queryHub - a micro API for the endpoints of the travel app
+var path = require('path')
+const dotenv = require('dotenv').config()
 const express = require('express')
-const router = express.Router()
+const uid = require('uid-safe')
+const session = require('express-session')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const app = express()
 const wmo = require('./wmo.js')
+const mockAPIResponse = require('./mockAPI.js')
+app.use(express.static('dist'))
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
+//The syntax for samesite is all over the place, so i use all
+app.use(session(  {
+  secret: process.env.sessionkey,
+  resave: true,
+  secure: false,
+  saveUninitialized: true,
+  name: 'travelplanner',
+  cookie: { 'sameSite': 'lax','SameSite':'lax','samesite': 'lax', httpOnly: false }
+}))
 
-router.post("/querydata", function (req, res) {
+app.get('/favicon.ico', (req,res) => {
+  res.send('_')
+})
+
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(('dist/index.html')))
+})
+
+
+
+app.post("/yAPI/querydata", function (req, res) {
   let _data = req.body
   req.session.dest = _data["dest"]
   req.session.date = _data["date"]
@@ -14,7 +45,7 @@ router.post("/querydata", function (req, res) {
   })
 })
 
-router.get("/getEverything", function (req, res) {
+app.get("/yAPI/getEverything", function (req, res) {
 
   if (req.session.dest) {
     //build up query string for geonames
@@ -97,4 +128,4 @@ router.get("/getEverything", function (req, res) {
   }
 })
 
-module.exports = router
+module.exports = app
