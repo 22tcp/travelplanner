@@ -1,9 +1,4 @@
 import './styles/main.scss'
-
-
-//import * as bootstrap from 'bootstrap'
-
-//import { handleSubmit } from './js/app.js'
 import { storageEvaluate } from './js/app.js'
 import { checkComplete } from './js/app.js'
 import { deleteTraveldata } from './js/app.js'
@@ -11,9 +6,7 @@ import { addDateInput } from './js/app.js'
 import { timespan } from './js/app.js'
 import { addPicture } from './js/app.js'
 import { initialSearch } from './js/app.js'
-
-//export { handleSubmit }
-
+import Pic from '../static/travelcat.jpg'
 
 document.addEventListener('DOMContentLoaded', () => {
 //does not look pretty when hitting enter in the box
@@ -30,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   },3000)
  
   
-  document.getElementById('vPicture').appendChild(addPicture() );
+  document.getElementById('vPicture').appendChild(addPicture(Pic) );
   document.getElementById('datepicker').appendChild(addDateInput() );
 
   storageEvaluate()

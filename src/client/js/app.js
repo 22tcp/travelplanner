@@ -1,6 +1,5 @@
-const msgElement = document.getElementById('messages')
-
 const _logMessage = (msg) => {
+  const msgElement = document.getElementById('messages')
   msgElement.classList.remove('nodisplay')
   msgElement.innerHTML=` ${msg} `
   setTimeout(() => {
@@ -65,7 +64,7 @@ export const deleteTraveldata = () => {
 export const timespan = () => {
   const datedata = document.getElementById('datepickerinput')
   const displaydays = document.getElementById('numberofdays')
-  const incompobj = document.getElementById('incomplete');
+  const incompobj = document.getElementById('incomplete')
   const duration = document.getElementById('duration')
   if (!datedata) { return }
   if (!datedata.value.length) {
@@ -79,31 +78,31 @@ export const timespan = () => {
 }
 
 export function addDateInput() {
-  let dobject = new Date(new Date().getTime());
-  const tzo = dobject.getTimezoneOffset();
-  dobject.setDate(dobject.getDate() + 1);
-  let dlimit = dobject.toISOString().slice(0, 10);
-  const element = document.createElement('input');
-  element.setAttribute("type", "date");
-  element.setAttribute("min", dlimit);
-  element.setAttribute("max", "2099-12-31");
+  let dobject = new Date(new Date().getTime())
+  const tzo = dobject.getTimezoneOffset()
+  dobject.setDate(dobject.getDate() + 1)
+  let dlimit = dobject.toISOString().slice(0, 10)
+  const element = document.createElement('input')
+  element.setAttribute("type", "date")
+  element.setAttribute("min", dlimit)
+  element.setAttribute("max", "2099-12-31")
   element.setAttribute("id", "datepickerinput")
-  element.classList.add("date-picker");
-  return element;
+  element.classList.add("date-picker")
+  return element
 }
 
-import Pic from '../../static/travelcat.jpg'
-export function addPicture() {
-  const myImage = new Image();
-  myImage.classList.add("ha-image");
-  myImage.src = Pic;
-  myImage.id = 'Pic';
-  return myImage;
+
+export function addPicture(image) {
+  const myImage = new Image()
+  myImage.classList.add("ha-image")
+  myImage.src = image
+  myImage.id = 'Pic'
+  return myImage
 }
 
 /* Populate Country-drop-down because city names are not unique */
-async function _fetchCountries() {
-
+export async function _fetchCountries() {
+  
   const countries = document.getElementById('country')
   let Countries = {}
   let htmlAppend = ""
@@ -116,13 +115,13 @@ async function _fetchCountries() {
       _logMessage("country list complete")
       //console.log(country.name.common, country.cca2)
       country.name.common = country.name.common.substring(0, 25)
-      Countries[country.name.common] = country.cca2;
+      Countries[country.name.common] = country.cca2
 
     })
     let sortedCountries = Object.keys(Countries).sort().reduce(
       (obj, key) => {
         obj[key] = Countries[key]
-        return obj;
+        return obj
       }, {}
     )
     for (const key in sortedCountries) {
@@ -156,9 +155,9 @@ const uploadTo = async (url = '', data = {} ) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data)
-  });
+  })
   try {
-    const status = await response.json();
+    const status = await response.json()
     return status;
   } catch {
     _logMessage("uploadTo: " + error)    
