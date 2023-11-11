@@ -1,10 +1,12 @@
-## Webpack bootstrap travelapp showcase
+## Webpack travelcountdown showcase
 What it does.
 You set country, type the name of the city 
 and choose a date.
 If the API search finds coordinates for the city
 it will display a matching image and a countdown for the journey,
 plus typical weather data for that area and time.
+If the city has no corresponding image,
+an image associated with the country will be shown.
 
 
 ## Get Up and Running
@@ -21,8 +23,7 @@ git clone -- git@github.com:22tcp/travelapp.git --
 - this app runs on localhost:8081, 
 but you can of course edit that in index.js  
   
-  To run there must be a .env file with the variables filled with your
-  own credentials
+To run there must be a .env file with the variables filled with your own credentials
 geonames_user=
 sessionkey=    
 // this is for a rudimentary session which also serves as per-user variable space server-side, set it 32 characters wide
